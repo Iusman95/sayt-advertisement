@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from page.models import Photo, Answer
+from page.forms import AnswerForm
+from django.urls import reverse
+
 
 # Create your views here.
 
@@ -11,20 +14,26 @@ def index(request):
         )
 
 
-def index_two(request):
-    photo_two = Photo.objects.all()
-    return render(request, 
-        template_name='index_two.html', 
-        context={'photo_two': photo_two}
-        )
 
 def answer(request):
+    answer_form = AnswerForm()
+
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            form.save()
     
-    answer = Answer.objects.all()
-    if answer == answer:
-        del answer
+    
+    context = {
+        'form': answer_form
+        }
+
     return render(
         request,
-        template_name=
-    ) 
+        template_name='index_two.html', 
+        context = context 
+        ) 
 
+   
+
+        
