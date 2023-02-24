@@ -11,7 +11,7 @@ class Photo(models.Model):
 
 class Answer(models.Model):
     title = models.CharField(max_length=30)
-    text = models.TextField(max_length=600)
+    text = models.TextField(max_length=100)
     time = models.DateTimeField(auto_now_add=True)
 
 

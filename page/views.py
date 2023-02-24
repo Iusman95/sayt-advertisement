@@ -17,6 +17,7 @@ def index(request):
 
 def answer(request):
     answer_form = AnswerForm()
+    answer = Answer.objects.all()
 
     if request.method == "POST":
         form = AnswerForm(request.POST)
@@ -25,7 +26,8 @@ def answer(request):
     
     
     context = {
-        'form': answer_form
+        'form': answer_form,
+        'answer': answer
         }
 
     return render(
@@ -34,6 +36,10 @@ def answer(request):
         context = context 
         ) 
 
+
+def stipendia(request):
+    return render(request, 
+    template_name='stipendia.html')
    
 
         

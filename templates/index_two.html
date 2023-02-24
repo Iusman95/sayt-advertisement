@@ -4,15 +4,36 @@
 <div class="container">
 <br>
 
-<form method="post">
+<!-- <form method="post">
 {% csrf_token %}
  {{ form.title  }} Напишите своё имя  <br> <br>
  {{ form.text  }} Напишите текст <br><br>
 
 <button>Отправить</button>
+</form> -->
+<center>
+  <h3>Оставьте свой отзыв</h3>  
+</center>
+<br>
+<form action="{% url 'answer' %}" method="post">
+    {% csrf_token %}
+       <p>{{ form.title }} Напишите своё имя</p>
+       <p>{{ form.text }} Напишите комментарий</p>
+    <input type="submit" value="Сохранить">
 </form>
 
+<br>
+<br>
+<hr>
+{% for i in answer %}
+<p>{{ i.title }}</p> 
+<p>{{ i.text }}</p> 
+<p>{{ i.time }}</p>
+<hr> 
+{% endfor %}
 </div>
+
+
 
 
 
